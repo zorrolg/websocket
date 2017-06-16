@@ -1,5 +1,7 @@
 package net.paiyou.entity.enums;
 
+import java.util.Arrays;
+
 import net.paiyou.entity.interfaces.IWeight;
 
 /**
@@ -7,23 +9,42 @@ import net.paiyou.entity.interfaces.IWeight;
  */
 public enum CardWeight implements IWeight {
 
-    C2(0),
-    A(14),
-    K(13),
-    Q(12),
-    J(15),
-    C10(10),
-    C9(10),
-    C8(10),
-    C7(10),
-    C6(10),
-    C5(10),
-    C4(),
-    C3(3);
+    $3(2),
+    $4(3),
+    $5(4),
+    $6(5),
+    $7(6),
+    $8(7),
+    $9(8),
+    $10(9),
+    J(10),
+    Q(11),
+    K(12),
+    A(13),
+    $2(1),
+    JOKER(14),
+    $JOKER(15),;
 
-    private byte code;
+    private byte $ode;
 
     private CardWeight(int input) {
-        this.code = (byte) input;
+        this.$ode = (byte) input;
+    }
+
+    @Override
+    public byte weight() {
+        return (byte) this.ordinal();
+    }
+
+    @Override
+    public String toString() {
+        return this.name();
+    }
+
+    public static void main(String[] args) {
+        System.out.println($2.weight());
+        System.out.println($5.weight());
+        System.out.println($2.compareTo($5));
+        System.out.println(Arrays.asList(values()));
     }
 }

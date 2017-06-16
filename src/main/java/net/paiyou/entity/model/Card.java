@@ -1,5 +1,7 @@
 package net.paiyou.entity.model;
 
+import net.paiyou.entity.enums.CardWeight;
+import net.paiyou.entity.enums.Color;
 import net.paiyou.entity.interfaces.IWeight;
 import net.paiyou.entity.interfaces.ICard;
 
@@ -8,9 +10,18 @@ import net.paiyou.entity.interfaces.ICard;
  */
 public class Card implements IWeight, ICard {
 
+    private CardWeight weight;
+
+    private Color color;
+
+    /**
+     *
+     */
+    private byte number;
+
     @Override
     public byte weight() {
-        return 0;
+        return weight.weight();
     }
 
     @Override

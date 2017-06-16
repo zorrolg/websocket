@@ -1,26 +1,30 @@
 package net.paiyou.entity.enums;
 
+import net.paiyou.entity.interfaces.IWeight;
+
 /**
  * Created by 72717 on 2017/6/3.
  */
-public enum Color {
+public enum Color implements IWeight{
     /**
      * 黑桃
      */
-    BLACK,
+    SPADE,
     /**
      * 红桃
      */
-    RED,
+    HEART,
     /**
      * 梅花
      */
-    FLOWER,
+    CLUB,
     /**
      * 方块
      */
-    BLOCK;
+    DIAMOND;
 
-
-
+    @Override
+    public byte weight() {
+        return (byte)this.ordinal();
+    }
 }

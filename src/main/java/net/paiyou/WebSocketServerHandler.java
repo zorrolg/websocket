@@ -86,8 +86,8 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> 
             sendHttpResponse(ctx, req, new DefaultFullHttpResponse(HTTP_1_1, NOT_FOUND));
             return;
         }
-
-        client = RequestService.clientRegister(parameters.get(HTTP_REQUEST_STRING).get(0));
+        List<String> requestParam = parameters.get(HTTP_REQUEST_STRING);
+        client = RequestService.clientRegister(requestParam.get(0));
         if (client.getRoomId() == 0) {
             System.err.printf("房间号不可缺省");
             sendHttpResponse(ctx, req, new DefaultFullHttpResponse(HTTP_1_1, NOT_FOUND));
