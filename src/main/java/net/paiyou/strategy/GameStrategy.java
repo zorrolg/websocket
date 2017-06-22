@@ -8,7 +8,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import net.paiyou.action.Action;
+import net.paiyou.action.ActionType;
 import net.paiyou.entity.model.Card;
+import net.paiyou.entity.model.PokerTable;
 import net.paiyou.game.GameContext;
 
 
@@ -20,13 +23,13 @@ import net.paiyou.game.GameContext;
 public interface GameStrategy {
 
     /**
-     * 检查一个麻将桌是否符合条件开始进行一局。
+     * 检查一个扑克桌是否符合条件开始进行一局。
      *
      * @param table
      *            麻将桌
      * @return 如果可以开始，返回true，否则返回false。
      */
-    public boolean checkReady(MahjongTable table);
+    public boolean checkReady(PokerTable table);
 
     /**
      * 获取全部扑克牌的列表。

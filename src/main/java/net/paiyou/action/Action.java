@@ -24,7 +24,7 @@ public class Action {
      * 新建一个实例，没有相关的牌。
      */
     public Action(ActionType type) {
-        this(type, (Set<Tile>) null);
+        this(type, (Set<Card>) null);
     }
 
     /**

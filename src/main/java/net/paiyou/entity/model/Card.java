@@ -28,4 +28,10 @@ public class Card implements IWeight, ICard {
     public byte code() {
         return 0;
     }
+
+
+    public static void main(String[] args) {
+        System.out.printf("ssss");
+
+    }
 }

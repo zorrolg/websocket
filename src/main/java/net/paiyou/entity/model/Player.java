@@ -1,5 +1,8 @@
 package net.paiyou.entity.model;
 
+/**
+ *游戏进程相关数据
+ */
 public class Player {
 	
 	/**
@@ -12,7 +15,6 @@ public class Player {
 	 * 玩家id
 	 */
 	private Long playerId;
-
 
 	
 	public boolean isInRoom() {
