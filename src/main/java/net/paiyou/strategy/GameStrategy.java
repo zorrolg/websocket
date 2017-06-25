@@ -10,15 +10,16 @@ import java.util.Set;
 
 import net.paiyou.action.Action;
 import net.paiyou.action.ActionType;
+import net.paiyou.entity.enums.PlayerLocation;
 import net.paiyou.entity.model.Card;
 import net.paiyou.entity.model.PokerTable;
+import net.paiyou.game.ActionAndLocation;
+import net.paiyou.game.ActionTypeAndLocation;
 import net.paiyou.game.GameContext;
 
 
 /**
  * 游戏策略。即一种游戏规则的定义。
- *
- * @author blovemaple <blovemaple2010(at)gmail.com>
  */
 public interface GameStrategy {
 
@@ -74,61 +75,6 @@ public interface GameStrategy {
      * @return 默认动作
      */
     public ActionAndLocation getDefaultAction(GameContext context, Map<PlayerLocation, Set<ActionType>> choises);
-
-    /**
-     * 获取此策略支持的所有和牌类型。
-     */
-    public List<? extends WinType> getAllWinTypes();
-
-    /**
-     * 判断指定条件下是否可和牌。<br>
-     * 默认实现为使用此策略支持的所有和牌类型进行判断，至少有一种和牌类型判断可以和牌则可以和牌。
-     */
-    public default boolean canWin(WinInfo winInfo) {
-        return getAllWinTypes().stream().anyMatch(winType -> winType.match(winInfo));
-        // TODO 缓存
-    }
-
-    /**
-     * 获取此策略支持的所有番种。返回的列表中，被覆盖的番种必须在覆盖它的番种之后。不允许两个番种相互覆盖。
-     */
-    public List<FanType> getAllFanTypes();
-
-    /**
-     * 检查和牌的所有番种和番数。<br>
-     * 默认实现为使用此策略支持的所有番种和番数进行统计。
-     */
-    public default Map<FanType, Integer> getFans(WinInfo winInfo) {
-        // 先parse和牌units
-        getAllWinTypes().forEach(winType -> winType.parseWinTileUnits(winInfo));
-        // 如果没parse出来，说明不和牌，直接返回空map
-        if (winInfo.getUnits() == null || winInfo.getUnits().isEmpty())
-            return Collections.emptyMap();
-
-        // 算番
-        Map<FanType, Integer> attachedFanTypes = new HashMap<>();
-        LinkedList<FanType> uncheckedFanTypes = new LinkedList<>(getAllFanTypes());
-        Map<FanType, Integer> fans = new HashMap<>();
-
-        FanType crtFanType;
-        while ((crtFanType = uncheckedFanTypes.pollFirst()) != null) {
-            Integer matchCount;
-
-            matchCount = attachedFanTypes.get(crtFanType);
-            if (matchCount == null)
-                matchCount = crtFanType.match(winInfo);
-
-            if (matchCount > 0) {
-                fans.put(crtFanType, crtFanType.score() * matchCount);
-                attachedFanTypes.put(crtFanType, matchCount);
-                Set<? extends FanType> covered = crtFanType.covered();
-                if (covered != null && !covered.isEmpty())
-                    uncheckedFanTypes.removeAll(covered);
-            }
-        }
-
-        return fans;
-    }
 
     /**
      * 根据当前状态判断游戏是否结束。

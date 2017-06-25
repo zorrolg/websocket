@@ -121,7 +121,6 @@ public class PokerTable {
 	/**
 	 * 一个位置的玩家的视图。需要限制一些权限。
 	 * 
-	 * @author blovemaple <blovemaple2010(at)gmail.com>
 	 */
 	public class PlayerView {
 
@@ -151,20 +150,6 @@ public class PokerTable {
 		 */
 		public int getTileWallSize() {
 			return PokerTable.this.getTileWallSize();
-		}
-
-		/**
-		 * 返回此局开始时的底牌数量。
-		 */
-		public int getInitBottomSize() {
-			return PokerTable.this.getInitBottomSize();
-		}
-
-		/**
-		 * 返回已经从底部摸牌的数量。
-		 */
-		public int getDrawedBottomSize() {
-			return PokerTable.this.drawedBottomSize;
 		}
 
 		/**

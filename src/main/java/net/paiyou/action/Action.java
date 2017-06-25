@@ -68,8 +68,8 @@ public class Action {
         this.tiles = tiles;
     }
 
-    public void setTile(Card tile) {
-        this.tiles = Collections.singleton(tile);
+    public void setTile(Card card) {
+        this.tiles = Collections.singleton(card);
     }
 
     @Override

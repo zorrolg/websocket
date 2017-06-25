@@ -23,7 +23,7 @@ public class PlayerInfo implements Cloneable {
 	/**
 	 * 最后打出的牌。
 	 */
-	private Card lastDrawedTile = null;
+	private Set<Card> lastDrawedTile = null;
 	/**
 	 * 已经打出的牌。
 	 */
@@ -41,11 +41,15 @@ public class PlayerInfo implements Cloneable {
 		this.player = player;
 	}
 
-	public Card getLastDrawedTile() {
+	public Set<Card> getAliveTiles() {
+		return aliveTiles;
+	}
+
+	public Set<Card> getLastDrawedTile() {
 		return lastDrawedTile;
 	}
 
-	public void setLastDrawedTile(Card lastDrawedTile) {
+	public void setLastDrawedTile(Set<Card> lastDrawedTile) {
 		this.lastDrawedTile = lastDrawedTile;
 	}
 
@@ -86,7 +90,6 @@ public class PlayerInfo implements Cloneable {
 		// deep copy
 		c.aliveTiles = new HashSet<>(aliveTiles);
 		c.discardedTiles = new ArrayList<>(discardedTiles);
-		c.tileGroups = new ArrayList<>(tileGroups);
 		return c;
 	}
 
@@ -104,8 +107,6 @@ public class PlayerInfo implements Cloneable {
 
 	/**
 	 * 一个位置的玩家的视图。需要限制一些权限。
-	 * 
-	 * @author blovemaple <blovemaple2010(at)gmail.com>
 	 */
 	public class PlayerView {
 

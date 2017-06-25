@@ -2,8 +2,6 @@ package net.paiyou.entity.enums;
 
 /**
  * 玩家位置。
- *
- * @author blovemaple
  */
 public enum PlayerLocation {
     // 顺序勿动。计算位置依赖此枚举的顺序！
