@@ -4,6 +4,7 @@ package net.paiyou.strategy;
 import net.paiyou.action.Action;
 import net.paiyou.action.ActionType;
 import net.paiyou.entity.enums.PlayerLocation;
+import net.paiyou.entity.enums.PlayerLocation.Relation;
 import net.paiyou.entity.model.Card;
 import net.paiyou.entity.model.PokerTable;
 import net.paiyou.game.GameContext;
@@ -50,7 +51,7 @@ public abstract class AbstractGameStrategy implements GameStrategy {
 		return new Action(DEAL);
 	}
 
-	private static final Set<ActionType> ALL_ACTION_TYPES = new HashSet<>(
+	private static final Set<ActionType> ALL_ACTION_TYPES = new HashSet<ActionType>(
 			Arrays.asList(StandardActionType.values()));
 
 	@Override
@@ -83,7 +84,7 @@ public abstract class AbstractGameStrategy implements GameStrategy {
 		c = c.thenComparing(a -> {
 			PlayerLocation lastLocation = a.getContext()
 					.getLastActionLocation();
-			return lastLocation == null ? Relation.SELF
+			return lastLocation == null ? PlayerLocation.Relation.SELF
 					: lastLocation.getRelationOf(a.getLocation());
 		});
 		return c;
