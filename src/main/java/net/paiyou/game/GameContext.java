@@ -16,15 +16,18 @@ public class GameContext {
 
     private GameStrategy gameStrategy;
 
+    private PlayerLocation zhuang;
+
     public PokerTable getTable() {
         return table;
     }
 
+
     public PlayerLocation getZhuangLocation() {
-        return PlayerLocation.EAST;
+        return zhuang;
     }
 
     public void setZhuangLocation(PlayerLocation zhuang) {
-
+        this.zhuang = zhuang;
     }
 }
