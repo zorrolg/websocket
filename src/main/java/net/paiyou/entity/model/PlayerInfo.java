@@ -6,9 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * 麻将桌上一个玩家的信息，包括玩家对象、牌，以及其他信息。
- * 
- * @author blovemaple <blovemaple2010(at)gmail.com>
+ * 桌上一个玩家的信息，包括玩家对象、牌，以及其他信息。
  */
 public class PlayerInfo implements Cloneable {
 	/**
@@ -19,19 +17,19 @@ public class PlayerInfo implements Cloneable {
 	/**
 	 * 手中的牌。
 	 */
-	protected Set<Card> aliveTiles = new HashSet<>();
+	protected Set<Card> aliveCards = new HashSet<>();
 	/**
 	 * 最后打出的牌。
 	 */
-	private Set<Card> lastDrawedTile = null;
+	private Set<Card> lastDrawedCard = null;
 	/**
 	 * 已经打出的牌。
 	 */
-	private List<Card> discardedTiles = new ArrayList<>();
+	private List<Card> discardedCards = new ArrayList<>();
 	/**
 	 * 是否出完手中的牌。
 	 */
-	private boolean isTing = false;
+	private boolean isWin = false;
 
 	public Player getPlayer() {
 		return player;
@@ -41,42 +39,42 @@ public class PlayerInfo implements Cloneable {
 		this.player = player;
 	}
 
-	public Set<Card> getAliveTiles() {
-		return aliveTiles;
+	public Set<Card> getAliveCards() {
+		return aliveCards;
 	}
 
-	public Set<Card> getLastDrawedTile() {
-		return lastDrawedTile;
+	public Set<Card> getLastDrawedCard() {
+		return lastDrawedCard;
 	}
 
-	public void setLastDrawedTile(Set<Card> lastDrawedTile) {
-		this.lastDrawedTile = lastDrawedTile;
+	public void setLastDrawedCard(Set<Card> lastDrawedCard) {
+		this.lastDrawedCard = lastDrawedCard;
 	}
 
-	public List<Card> getDiscardedTiles() {
-		return discardedTiles;
+	public List<Card> getDiscardedCards() {
+		return discardedCards;
 	}
 
-	public void setDiscardedTiles(List<Card> discardedTiles) {
-		this.discardedTiles = discardedTiles;
+	public void setDiscardedCards(List<Card> discardedCards) {
+		this.discardedCards = discardedCards;
 	}
 
-	public boolean isTing() {
-		return isTing;
+	public boolean isWin() {
+		return isWin;
 	}
 
-	public void setTing(boolean isTing) {
-		this.isTing = isTing;
+	public void setWin(boolean isTing) {
+		this.isWin = isTing;
 	}
 
 	/**
 	 * 清空玩家的牌，回到初始状态。
 	 */
 	public void clear() {
-		aliveTiles.clear();
-		lastDrawedTile = null;
-		discardedTiles.clear();
-		isTing = false;
+		aliveCards.clear();
+		lastDrawedCard = null;
+		discardedCards.clear();
+		isWin = false;
 	}
 
 	public PlayerInfo clone() {
@@ -88,8 +86,8 @@ public class PlayerInfo implements Cloneable {
 			throw new RuntimeException(e);
 		}
 		// deep copy
-		c.aliveTiles = new HashSet<>(aliveTiles);
-		c.discardedTiles = new ArrayList<>(discardedTiles);
+		c.aliveCards = new HashSet<>(aliveCards);
+		c.discardedCards = new ArrayList<>(discardedCards);
 		return c;
 	}
 
@@ -122,15 +120,15 @@ public class PlayerInfo implements Cloneable {
 		 * 返回手中的牌数。
 		 */
 		public int getAliveTileSize() {
-			return getAliveTiles().size();
+			return getAliveCards().size();
 		}
 
 		public List<Card> getDiscardedTiles() {
-			return discardedTiles;
+			return discardedCards;
 		}
 
-		public boolean isTing() {
-			return isTing;
+		public boolean isWin() {
+			return isWin;
 		}
 
 	}

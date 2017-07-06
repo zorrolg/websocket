@@ -50,7 +50,7 @@ public class DealActionType implements ActionType {
             int drawCount = i < 3 ? 4 : 1;
             Stream.of(Relation.values()).map(zhuang::getLocationOf)
                     .map(context::getPlayerInfoByLocation)
-                    .map(PlayerInfo::getAliveTiles)
+                    .map(PlayerInfo::getAliveCards)
                     .forEach(aliveTiles -> aliveTiles
                             .addAll(table.draw(drawCount)));
         }

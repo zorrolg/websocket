@@ -27,6 +27,4 @@ public class GameContext {
     public void setZhuangLocation(PlayerLocation zhuang) {
 
     }
-
-    getPlayerInfoByLocation()
 }
