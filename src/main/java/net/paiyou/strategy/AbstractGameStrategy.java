@@ -7,6 +7,7 @@ import net.paiyou.entity.enums.PlayerLocation;
 import net.paiyou.entity.enums.PlayerLocation.Relation;
 import net.paiyou.entity.model.Card;
 import net.paiyou.entity.model.PokerTable;
+import net.paiyou.game.ActionAndLocation;
 import net.paiyou.game.GameContext;
 
 import java.util.*;
@@ -73,8 +74,6 @@ public abstract class AbstractGameStrategy implements GameStrategy {
 
 	/**
 	 * 和>杠>碰>吃>其他，相同的比较与上次动作的玩家位置关系。
-	 * 
-	 * @see com.github.blovemaple.mj.rule.GameStrategy#getActionPriorityComparator()
 	 */
 	@Override
 	public Comparator<ActionTypeAndLocation> getActionPriorityComparator() {
@@ -114,7 +113,7 @@ public abstract class AbstractGameStrategy implements GameStrategy {
 
 	@Override
 	public ActionAndLocation getDefaultAction(GameContext context,
-			Map<PlayerLocation, Set<ActionType>> choises) {
+											  Map<PlayerLocation, Set<ActionType>> choises) {
 		if (context.getTable().getTileWallSize() == 0)
 			return new ActionAndLocation(new Action(LIUJU), null);
 		else

@@ -30,4 +30,6 @@ public class GameContext {
     public void setZhuangLocation(PlayerLocation zhuang) {
         this.zhuang = zhuang;
     }
+
+    getGameResult();
 }
