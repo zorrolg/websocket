@@ -25,15 +25,19 @@ public enum CardWeight implements IWeight {
     JOKER(14),
     $JOKER(15),;
 
-    private byte $ode;
+    private byte code;
 
     private CardWeight(int input) {
-        this.$ode = (byte) input;
+        this.code = (byte) input;
     }
 
     @Override
     public byte weight() {
         return (byte) this.ordinal();
+    }
+
+    public byte getCode() {
+        return code;
     }
 
     @Override

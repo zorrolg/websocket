@@ -1,5 +1,6 @@
 package net.paiyou.entity.enums;
 
+import java.util.Arrays;
 import net.paiyou.entity.interfaces.IWeight;
 
 /**
@@ -27,4 +28,14 @@ public enum Color implements IWeight{
     public byte weight() {
         return (byte)this.ordinal();
     }
+
+
+    public static void  main(String[] args) {
+        Color[] values = values();
+        for (Color color : values) {
+            System.out.println(color.weight());
+        }
+        System.out.println(Arrays.asList(values));
+    }
+
 }

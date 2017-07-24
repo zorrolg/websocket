@@ -48,14 +48,14 @@ public class DealActionType implements ActionType {
         PlayerLocation zhuang = context.getZhuangLocation();
         for (int i = 0; i < 4; i++) {
             int drawCount = i < 3 ? 4 : 1;
-            Stream.of(Relation.values()).map(zhuang::getLocationOf)
-                    .map(context::getPlayerInfoByLocation)
-                    .map(PlayerInfo::getAliveCards)
-                    .forEach(aliveTiles -> aliveTiles
-                            .addAll(table.draw(drawCount)));
+//            Stream.of(Relation.values()).map(zhuang::getLocationOf)
+//                    .map(context::getPlayerInfoByLocation)
+//                    .map(PlayerInfo::getAliveCards)
+//                    .forEach(aliveTiles -> aliveTiles
+//                            .addAll(table.draw(drawCount)));
         }
-        context.getPlayerInfoByLocation(zhuang).getAliveTiles()
-                .addAll(table.draw(1));
+//        context.getPlayerInfoByLocation(zhuang).getAliveTiles()
+//                .addAll(table.draw(1));
     }
 
 }
