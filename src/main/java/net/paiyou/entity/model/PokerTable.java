@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 /**
  * 麻将桌。
- * 
+ *
  * @author blovemaple <blovemaple2010(at)gmail.com>
  */
 public class PokerTable {
@@ -29,7 +29,7 @@ public class PokerTable {
 	private Map<PlayerLocation, PlayerInfo> playerInfos;
 
 	public void init() {
-		allCards = new ArrayList<Card>();
+		allCards = Card.all();
 		playerInfos = new EnumMap<>(PlayerLocation.class);
 		for (PlayerLocation location : PlayerLocation.values()) {
 			playerInfos.put(location, new PlayerInfo());
@@ -120,7 +120,7 @@ public class PokerTable {
 
 	/**
 	 * 一个位置的玩家的视图。需要限制一些权限。
-	 * 
+	 *
 	 */
 	public class PlayerView {
 

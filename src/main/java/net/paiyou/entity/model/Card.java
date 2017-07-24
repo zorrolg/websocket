@@ -40,10 +40,10 @@ public class Card implements IWeight, ICard {
         byte weightCode = (byte)(order.getCode() & 0x01111000);
         byte colorCode = (byte)(color.weight() & 0x00000110);
         byte last = (byte)(group & 0x00000001);
-        this.number = ;
+        this.number = (byte)(weightCode & colorCode & last);
 
     }
-    public static void all() {
+    public static List<Card> all() {
         all = Lists.newArrayListWithCapacity(144);
         for (CardWeight weight : CardWeight.values()) {
             for (Color color : Color.values()) {
@@ -73,9 +73,10 @@ public class Card implements IWeight, ICard {
 //                all.add(tile);
 //            }
         }
+        return all;
     }
 
     public static void main(String[] args) {
-        System.out.printf("ssss");
+
     }
 }

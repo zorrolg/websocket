@@ -9,7 +9,6 @@ import io.netty.handler.codec.http.*;
 import io.netty.handler.codec.http.websocketx.*;
 import io.netty.util.CharsetUtil;
 import io.netty.util.concurrent.GlobalEventExecutor;
-import net.paiyou.dto.Response;
 import net.paiyou.entity.model.Player;
 import net.paiyou.service.MessageService;
 import net.paiyou.service.RequestService;
@@ -31,7 +30,7 @@ import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
 public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> {
 
 	public static Logger LOGGER = LoggerFactory.getLogger(WebSocketServerHandler.class);
-	
+
     // websocket 服务的 uri
     private static final String WEBSOCKET_PATH = "/websocket";
 
@@ -60,7 +59,7 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> 
     }
 
     private void handleHttpRequest(ChannelHandlerContext ctx, FullHttpRequest req) {
-    	
+
         // Handle a bad request.
         if (!req.decoderResult().isSuccess()) {
             sendHttpResponse(ctx, req, new DefaultFullHttpResponse(HTTP_1_1, BAD_REQUEST));
@@ -132,8 +131,8 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> 
         String request = ((TextWebSocketFrame) frame).text();
         System.out.println(" 收到 " + ctx.channel() + request);
 
-        Response response = MessageService.sendMessage(client, request);
-        String msg = JSON.toJSONString(response);
+//        Response response = MessageService.sendMessage(client, request);
+//        String msg = JSON.toJSONString(response);
         if (channelGroupMap.containsKey(client.getRoomId())) {
             channelGroupMap.get(client.getRoomId()).writeAndFlush(new TextWebSocketFrame(msg));
         }

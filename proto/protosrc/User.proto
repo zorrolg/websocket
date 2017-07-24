@@ -1,6 +1,6 @@
 syntax = "proto2";
 //用户登录协议
-option java_package = "net.bc.game.proto";
+option java_package = "net.paiyou.proto";
 
 //登录返回信息
 message user_info {
@@ -9,43 +9,21 @@ message user_info {
     optional string icon = 3;//icon头像
     optional string uid = 4;//登陆uid
     required uint64 balance = 5;//房卡数量
+    required string token = 6;//token
 }
-//单条记录
-message login {
+
+message c2s_login_1000 {
     optional string uid = 1;
 }
 
-enum p_progress_state {
-     //未完成
-    not_finish = 1;
-
-    /**
-     *已完成未得奖励
-     */
-    done_unrewarded = 2;
-
-    /**
-     *已完成得到奖励
-     */
-    has_rewarded = 3;
-}
-//拉取列表数据
-//列表数据
-message m_8301_toc {
-    optional p_rebate_info role_info = 1;
+message s2c_login_1000 {
+    optional user_info role_info = 1;
 }
 
-//提现
-message m_8302_toc {
-    optional p_rebate_info role_info = 1;
+message c2s_relogin_1001 {
+    required string token = 1;
 }
 
-//获取提现现金
-message m_8303_tos {
-    required uint32 seq_id = 1;
-}
-//提现返回
-message m_8303_toc {
-    required uint32 seq_id = 1;
-    required uint64 gold = 2;
+message s2c_relogin_1001 {
+    optional user_info role_info = 1;
 }

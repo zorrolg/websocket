@@ -29,6 +29,22 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>org.jerry.framework</groupId>
+			<artifactId>framework-util</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jerry.framework</groupId>
+			<artifactId>framework-datacenter</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jerry.framework</groupId>
+			<artifactId>framework-net</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
 			<groupId>io.netty</groupId>
 			<artifactId>netty-all</artifactId>
 			<version>5.0.0.Alpha2</version>
@@ -55,6 +71,12 @@
 			<artifactId>guava</artifactId>
 			<version>21.0</version>
 		</dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java -->
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>3.3.1</version>
+        </dependency>
 
 		<dependency>
 			<groupId>commons-codec</groupId>
