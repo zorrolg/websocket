@@ -6,9 +6,9 @@ public class Request {
     private byte[] data;
     public Request(){}
 
-    public Request(long index, short cmd, byte[] data) {
+    public Request(long index, int cmd, byte[] data) {
         this.index = index;
-        this.cmd = cmd;
+        this.cmd = (short)cmd;
         this.data = data;
     }
 

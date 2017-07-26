@@ -13,6 +13,7 @@ import net.paiyou.entity.model.Player;
 import net.paiyou.service.MessageService;
 import net.paiyou.service.RequestService;
 
+import net.paiyou.service.protocol.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -122,7 +123,7 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> 
     private void broadcast(ChannelHandlerContext ctx, WebSocketFrame frame) {
 
         if (client.getId() == 0) {
-            Response response = new Response(1001, "没登录不能聊天哦");
+            Response response = new Response(1001, "没登录不能聊天哦".getBytes());
             String msg = JSON.toJSONString(response);
             ctx.channel().write(new TextWebSocketFrame(msg));
             return;
@@ -134,7 +135,7 @@ public class WebSocketServerHandler extends SimpleChannelInboundHandler<Object> 
 //        Response response = MessageService.sendMessage(client, request);
 //        String msg = JSON.toJSONString(response);
         if (channelGroupMap.containsKey(client.getRoomId())) {
-            channelGroupMap.get(client.getRoomId()).writeAndFlush(new TextWebSocketFrame(msg));
+            channelGroupMap.get(client.getRoomId()).writeAndFlush(new TextWebSocketFrame(request));
         }
 
     }

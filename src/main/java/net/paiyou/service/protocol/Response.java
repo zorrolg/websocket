@@ -4,11 +4,11 @@ public class Response extends Request{
 	private static long index = 0;
     private short statusCode;
 
-    public Response(short cmd, byte[] data) {
+    public Response(int cmd, byte[] data) {
     	super(++index, cmd, data);
     	this.statusCode = 0;
     }
-    public Response(long index, short cmd, byte[] data, short statusCode) {
+    public Response(long index, int cmd, byte[] data, short statusCode) {
         super(index, cmd, data);
         this.statusCode = statusCode;
     }
